@@ -1,0 +1,48 @@
+# Docker meta
+Dockerfile
+Dockerfile.*
+.dockerignore
+docker-compose*.yaml
+docker-compose*.yml
+
+# Git / VCS
+.git
+.gitignore
+.vscode
+
+# ── Python ──────────────────────────────────────────────
+# The virtualenv is rebuilt inside the image from requirements.txt.
+# Never ship the host-built venv (stale, wrong platform, huge, full of CVEs).
+bot/venv
+**/venv
+**/.venv
+__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache
+.mypy_cache
+
+# ── Secrets — must be mounted at runtime, never baked in ──
+.env
+.env.*
+!.env.sample
+bot/.env
+**/*.env
+client_secret.json
+service_credential.json
+**/client_secret.json
+**/service_credential.json
+keys/
+secrets/
+*.key
+*.pem
+
+# ── Data / backups / dumps (never belong in an image) ────
+pgdata/
+pgbckp/
+backups/
+*.dump
+backup.dump
+build.log

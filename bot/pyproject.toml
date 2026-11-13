@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "tally-bot"
+version = "0.1.0"
+description = "Telegram ledger bot: per-group accounts, manual operations and wallet-based balances"
+authors = ["maintainer <maintainer@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

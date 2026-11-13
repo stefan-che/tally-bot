@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: bot
+    steps:
+      - uses: actions/checkout@v4
+
+      # 3.11 only: numpy==1.25.1 has no wheels / does not build on 3.12+.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+          cache-dependency-path: |
+            bot/requirements.txt
+            bot/requirements-test.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements-test.txt
+
+      - name: Run tests
+        env:
+          BOT_TOKEN: "1:test"
+        run: pytest

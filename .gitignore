@@ -1,0 +1,23 @@
+# Python
+*/venv
+**/.venv
+__pycache__
+.pytest_cache
+
+# Secrets — never commit
+.env*
+!.env.sample
+client_secret.json
+service_credential.json
+/secrets
+/keys
+
+# Data, dumps, backups, logs
+/backups
+backup.dump
+*.dump
+*.log
+database_backup.json
+
+.DS_Store
+__MACOSX/
